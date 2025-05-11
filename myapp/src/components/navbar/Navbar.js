@@ -1,11 +1,25 @@
+import {useRef} from 'react';
 import './Navbar.css'
 
 
 const Navbar = () => {
+    const checkBoxRef = useRef(null);
+
+    const handleLinkClick = () => {
+        if (checkBoxRef.current) {
+            checkBoxRef.current.checked = false;
+        }
+    }
+    const navLinks = [
+        {path:"#", title:"Home"},
+        {path:"/", title:"About"},
+        {path:"/", title:"Services"},
+        {path:"/", title:"Contact"}
+    ]
     return <nav class="navbar">
         <div class="logo">MyBrand</div>
 
-        <input type="checkbox" id="toggle" class="checkbox" />
+        <input type="checkbox" id="toggle" class="checkbox" ref={checkBoxRef} />
         <label for="toggle" class="hamburger">
             <span></span>
             <span></span>
@@ -13,10 +27,7 @@ const Navbar = () => {
         </label>
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            {navLinks.map(obj => <li><a href={obj.path} onClick={handleLinkClick}>{obj.title}</a></li>)}
         </ul>
     </nav>
 }
