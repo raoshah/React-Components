@@ -1,14 +1,14 @@
 .main {
   position: relative;
-  height: 90vh;
-  overflow: hidden;
+  min-height: 90vh;
+  overflow: auto;
   display: flex;
   margin: 1rem 2rem ;
 }
 
 .category {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 10%;
   left: 0;
   width: 16%;
   height: 100%;
